@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import { TokenPayloadModel } from "../models/token-payload.model";
 
 export const authMiddleware: RequestHandler = (req, res, next) => {
-  const token = req.cookies.token;
+  const token = req.cookies[process.env.TOKEN_KEY!];
 
   if (!token) {
     res.sendStatus(401);
@@ -21,7 +21,7 @@ export const authMiddleware: RequestHandler = (req, res, next) => {
 
     next();
   } catch {
-    res.clearCookie("token");
+    res.clearCookie(process.env.TOKEN_KEY!);
     res.sendStatus(401);
   }
 };

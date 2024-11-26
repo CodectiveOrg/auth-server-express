@@ -16,7 +16,7 @@ export const generateToken = (
     expiresIn: "3d",
   });
 
-  res.cookie("token", token, {
+  res.cookie(process.env.TOKEN_KEY!, token, {
     secure: true,
     httpOnly: true,
     maxAge: 3 * 24 * 3600 * 1000,
