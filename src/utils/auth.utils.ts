@@ -12,7 +12,9 @@ export const generateToken = (
     user,
   };
 
-  const token = jwt.sign(payload, "this is a secret", { expiresIn: "3d" });
+  const token = jwt.sign(payload, process.env.TOKEN_SECRET!, {
+    expiresIn: "3d",
+  });
 
   res.cookie("token", token, {
     secure: true,

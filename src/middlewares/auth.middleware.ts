@@ -12,7 +12,10 @@ export const authMiddleware: RequestHandler = (req, res, next) => {
   }
 
   try {
-    const payload = jwt.verify(token, "this is a secret") as TokenPayloadModel;
+    const payload = jwt.verify(
+      token,
+      process.env.TOKEN_SECRET!,
+    ) as TokenPayloadModel;
 
     res.locals.user = payload.user;
 

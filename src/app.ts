@@ -9,6 +9,10 @@ import { publicRouter } from "./routes/public.routes";
 import { authRouter } from "./routes/auth.routes";
 import { dashboardRouter } from "./routes/dashboard.routes";
 
+import { validateEnv } from "./utils/env.utils";
+
+validateEnv();
+
 const PORT = process.env.PORT || 5000;
 
 const main = (): void => {
