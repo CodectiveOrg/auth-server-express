@@ -8,5 +8,5 @@ export const verifyEndpoint: RequestHandler = (req, res) => {
     return;
   }
 
-  res.sendStatus(200);
+  res.json({ user });
 };
