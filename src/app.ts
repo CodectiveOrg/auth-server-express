@@ -7,6 +7,7 @@ import "dotenv/config";
 
 import { publicRouter } from "./routes/public.routes";
 import { authRouter } from "./routes/auth.routes";
+import { dashboardRouter } from "./routes/dashboard.routes";
 
 const PORT = process.env.PORT || 5000;
 
@@ -18,6 +19,7 @@ const main = (): void => {
 
   app.use(publicRouter);
   app.use(authRouter);
+  app.use(dashboardRouter);
 
   app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}...`);
