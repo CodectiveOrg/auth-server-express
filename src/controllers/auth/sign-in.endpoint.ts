@@ -1,5 +1,6 @@
 import { RequestHandler } from "express";
 import { readUser } from "../../database/user.table";
+import { generateToken } from "../../utils/auth.utils";
 
 export const signInEndpoint: RequestHandler = (req, res) => {
   const { username, password } = req.body;
@@ -16,5 +17,7 @@ export const signInEndpoint: RequestHandler = (req, res) => {
     return;
   }
 
-  res.json({ user: { username } });
+  generateToken(res, { username });
+
+  res.json({ message: "Signed in successfully." });
 };
