@@ -1,5 +1,12 @@
-async function main(): Promise<void> {
-  console.log("Hello, friend!");
-}
+import express from "express";
 
-main().then();
+const app = express();
+const port = 5000;
+
+app.get("/", (req, res) => {
+  res.send("Hello, friend!");
+});
+
+app.listen(port, () => {
+  console.log(`App listening on port ${port}...`);
+});
