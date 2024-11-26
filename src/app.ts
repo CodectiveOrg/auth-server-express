@@ -5,6 +5,8 @@ import cors from "cors";
 
 import "dotenv/config";
 
+import { publicRouter } from "./routes/public.routes";
+
 const PORT = process.env.PORT || 5000;
 
 const main = (): void => {
@@ -13,9 +15,7 @@ const main = (): void => {
   app.use(cookieParser());
   app.use(cors());
 
-  app.get("/", (req, res) => {
-    res.send("Hello, friend!");
-  });
+  app.use(publicRouter);
 
   app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}...`);
